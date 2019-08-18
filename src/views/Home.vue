@@ -12,7 +12,7 @@
     name: 'home',
     methods: {
       start() {
-        
+        this.$router.push( 'auth' )
       }
     }
   }
