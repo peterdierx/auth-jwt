@@ -5,7 +5,7 @@ const api = axios.create({
 })
 
 export default {
-  newUser ( user ) {
-    return api.post( '/user', user )
+  newUser( user ) {
+    return api.post( '/users', user )
   }
 }
