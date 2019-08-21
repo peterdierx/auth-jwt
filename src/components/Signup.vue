@@ -47,6 +47,7 @@
         const token = await( api.post( '/users', this.user ) )
         localStorage.setItem( 'token', token.data )
         api.defaults.headers.common[ 'Authorization' ] = token.data
+        this.$store.commit( 'authenticate' )
         this.$router.push( 'auth' )
       }
     }

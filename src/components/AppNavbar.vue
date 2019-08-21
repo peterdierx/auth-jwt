@@ -15,12 +15,15 @@
         <div class='navbar-end'>
           <div class='navbar-item'>
             <div class='buttons'>
-              <router-link to='/signup' class='button is-primary'>
+              <router-link to='/signup' class='button is-primary' v-show='!$store.state.isAuthenticated'>
                 <strong>Sign up</strong>
               </router-link>
-              <a class='button is-light'>
+              <button class='button is-light' v-show='!$store.state.isAuthenticated'>
                 Log in
-              </a>
+              </button>
+              <button class='button is-light' v-show='$store.state.isAuthenticated' @click='logout'>
+                Log out
+              </button>
             </div>
           </div>
         </div>
@@ -31,6 +34,11 @@
 
 <script>
   export default {
-    name: 'AppNavbar'
+    name: 'AppNavbar',
+    methods: {
+      logout() {
+        this.$store.commit( 'logout' )
+      }
+    },
   }
 </script>
