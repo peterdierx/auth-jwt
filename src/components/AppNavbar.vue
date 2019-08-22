@@ -18,9 +18,9 @@
               <router-link to='/signup' class='button is-primary' v-show='!$store.state.token'>
                 <strong>Sign up</strong>
               </router-link>
-              <button class='button is-light' v-show='!$store.state.token'>
+              <router-link to='login' class='button is-light' v-show='!$store.state.token'>
                 Log in
-              </button>
+              </router-link>
               <button class='button is-light' v-show='$store.state.token' @click='logout'>
                 Log out
               </button>
