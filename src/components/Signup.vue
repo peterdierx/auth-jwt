@@ -1,7 +1,7 @@
 <template>
   <div class='container' style='margin-top:30px;width:1100px'>
     <div class='box' style='width:400px;'>
-      <form @submit.prevent='signup'>
+      <form @submit.prevent='register'>
         <!-- NAME -->
         <div class='field'>
           <label class='label'>Name</label>
@@ -29,9 +29,6 @@
 </template>
 
 <script>
-  import axios from 'axios'
-  const api = axios.create( { baseURL: 'http://localhost:4567' } )
-
   export default {
     name: 'Signup',
     data() {
@@ -43,11 +40,8 @@
       }
     },
     methods: {
-      async signup() {
-        const token = await( api.post( '/users', this.user ) )
-        localStorage.setItem( 'token', token.data )
-        api.defaults.headers.common[ 'Authorization' ] = token.data
-        this.$store.commit( 'authenticate' )
+      async register() {
+        this.$store.dispatch( 'signup', this.user )
         this.$router.push( 'auth' )
       }
     }

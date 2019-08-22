@@ -15,13 +15,13 @@
         <div class='navbar-end'>
           <div class='navbar-item'>
             <div class='buttons'>
-              <router-link to='/signup' class='button is-primary' v-show='!$store.state.isAuthenticated'>
+              <router-link to='/signup' class='button is-primary' v-show='!$store.state.token'>
                 <strong>Sign up</strong>
               </router-link>
-              <button class='button is-light' v-show='!$store.state.isAuthenticated'>
+              <button class='button is-light' v-show='!$store.state.token'>
                 Log in
               </button>
-              <button class='button is-light' v-show='$store.state.isAuthenticated' @click='logout'>
+              <button class='button is-light' v-show='$store.state.token' @click='logout'>
                 Log out
               </button>
             </div>

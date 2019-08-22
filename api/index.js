@@ -23,14 +23,15 @@ api.get( '/', ( request, response ) => {
   response.send( 'Authentication API - Peter Dierx 2019' )
 })
 
-// NEW USER
-api.post( '/users', ( request, response ) => {
+// REGISTER NEW USER
+api.post( '/signup', ( request, response ) => {
   const user = {
     id:       users.length + 1,
     name:     request.body.name,
     password: request.body.password
   }
   users.push( user )
+  console.log( users )
   let token = jwt.sign( user.id, 'secret' )
   response.json( token )
 })
