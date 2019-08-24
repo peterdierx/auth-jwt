@@ -23,6 +23,12 @@ export default new Vuex.Store({
       localStorage.setItem( 'token', token )
       axios.defaults.headers.common['Authorization'] = token
       commit( 'authenticate', token )
+    },
+    async login( { commit }, user ) {
+      let token = ( await( axios.post( 'http://localhost:4567/login', user ) )).data
+      localStorage.setItem( 'token', token )
+      axios.defaults.headers.common['Authorization'] = token
+      commit( 'authenticate', token )
     }
   }
 })

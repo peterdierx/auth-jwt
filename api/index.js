@@ -36,5 +36,20 @@ api.post( '/signup', ( request, response ) => {
   response.json( token )
 })
 
+// LOGIN USER
+api.post( '/login', ( request, response ) => {
+  const userName = request.body.name
+  const userId   = users.findIndex( user => user.name == userName )
+
+  if( userId == -1 )
+    return response.status( 401 ).send( { message: 'Name or Password invalid' } )
+
+  if( users[ userId ].password != request.body.password )
+    return response.status( 401 ).send( { message: 'Name or Password invalid' } )
+  
+  let token = jwt.sign( userId, 'secret' )
+  response.json( token )
+})
+
 // SERVER
 api.listen( port, () => console.log( `Server listening at http://localhost:${ port }` ) )

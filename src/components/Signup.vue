@@ -18,9 +18,9 @@
           </p>
         </div>
 
-        <!-- SAVE -->
+        <!-- SIGNUP -->
         <div class='field is-grouped'>
-          <p class='control'><button class='button is-info'>Save</button></p>
+          <p class='control'><button class='button is-info'>Signup</button></p>
           <p class='control'><router-link class='button is-success' to='/auth'>Cancel</router-link></p>
         </div>
       </form>
