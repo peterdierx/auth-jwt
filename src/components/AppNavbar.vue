@@ -9,7 +9,8 @@
           </router-link>
         </div>
         <div class='navbar-item'>
-          <strong>Authentication with Vue and JWT</strong>
+          <strong v-if='!$store.state.token'>Authentication with Vue and JWT</strong>
+          <strong v-else>Authenticated</strong>
         </div>
         <!-- AUTH -->
         <div class='navbar-end'>
