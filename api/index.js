@@ -42,10 +42,10 @@ api.post( '/login', ( request, response ) => {
   const userId   = users.findIndex( user => user.name == userName )
 
   if( userId == -1 )
-    return response.status( 401 ).send( { message: 'Name or Password invalid' } )
+    return response.json( 'authentication_error' )
 
   if( users[ userId ].password != request.body.password )
-    return response.status( 401 ).send( { message: 'Name or Password invalid' } )
+    return response.json( 'authentication_error' )
   
   let token = jwt.sign( userId, 'secret' )
   response.json( token )

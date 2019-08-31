@@ -6,7 +6,8 @@ Vue.use( Vuex )
 
 export default new Vuex.Store({
   state: {
-    token: localStorage.getItem( 'token' ) || ''
+    token: localStorage.getItem( 'token' ) || '',
+    error: false
   },
   mutations: {
     authenticate( state, token ) {
@@ -15,6 +16,12 @@ export default new Vuex.Store({
     logout( state ) {
       state.token = ''
       localStorage.clear( 'token' )
+    },
+    errorStatus( state ) {
+      state.error = true
+    },
+    clearError( state ) {
+      state.error = false
     }
   },
   actions: {
@@ -26,9 +33,13 @@ export default new Vuex.Store({
     },
     async login( { commit }, user ) {
       let token = ( await( axios.post( 'http://localhost:4567/login', user ) )).data
-      localStorage.setItem( 'token', token )
-      axios.defaults.headers.common['Authorization'] = token
-      commit( 'authenticate', token )
+      if ( token === 'authenticationError' ) {
+        commit( 'errorStatus' )
+      } else {
+        localStorage.setItem( 'token', token )
+        axios.defaults.headers.common['Authorization'] = token
+        commit( 'authenticate', token )
+      }
     }
   }
 })

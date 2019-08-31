@@ -16,9 +16,9 @@
         <div class='navbar-end'>
           <div class='navbar-item'>
             <div class='buttons'>
-              <router-link to='/signup' class='button is-primary' v-show='!$store.state.token'>
+              <button class='button is-primary' v-show='!$store.state.token' @click='signup'>
                 <strong>Sign up</strong>
-              </router-link>
+              </button>
               <router-link to='login' class='button is-light' v-show='!$store.state.token'>
                 Log in
               </router-link>
@@ -29,6 +29,11 @@
           </div>
         </div>
       </nav>
+      
+    </div>
+    <!-- ERROR -->
+    <div v-show='$store.state.error' class='box'>
+      <strong color='red'>Invalid username or password.</strong>
     </div>
   </div>
 </template>
@@ -39,6 +44,10 @@
     methods: {
       logout() {
         this.$store.commit( 'logout' )
+      },
+      signup() {
+        this.$store.commit( 'clearError' )
+        this.$router.push( '/signup' )
       }
     },
   }
