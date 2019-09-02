@@ -16,12 +16,12 @@
         <div class='navbar-end'>
           <div class='navbar-item'>
             <div class='buttons'>
-              <button class='button is-primary' v-show='!$store.state.token' @click='signup'>
+              <button class='button is-primary' @click='signup' v-show='!$store.state.token'>
                 <strong>Sign up</strong>
               </button>
-              <router-link to='login' class='button is-light' v-show='!$store.state.token'>
+              <button class='button is-light' @click='login' v-show='!$store.state.token'>
                 Log in
-              </router-link>
+              </button>
               <button class='button is-light' v-show='$store.state.token' @click='logout'>
                 Log out
               </button>
@@ -42,6 +42,10 @@
   export default {
     name: 'AppNavbar',
     methods: {
+      login() {
+        this.$store.commit( 'clearError' )
+        this.$router.push( '/login' )
+      },
       logout() {
         this.$store.commit( 'logout' )
       },
