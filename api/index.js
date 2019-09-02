@@ -16,7 +16,7 @@ api.use( express.json() )
 api.use( cors() )
 
 // USERS
-const users = []
+const users = [ { id: 1, name: 'John Doe', password: 'none' } ]
 
 // GET
 api.get( '/', ( request, response ) => {
@@ -42,10 +42,10 @@ api.post( '/login', ( request, response ) => {
   const userId   = users.findIndex( user => user.name == userName )
 
   if( userId == -1 )
-    return response.json( 'authentication_error' )
+    return response.json( 'authenticationError' )
 
   if( users[ userId ].password != request.body.password )
-    return response.json( 'authentication_error' )
+    return response.json( 'authenticationError' )
   
   let token = jwt.sign( userId, 'secret' )
   response.json( token )
