@@ -6,7 +6,7 @@
         <div class='field'>
           <label class='label'>Name</label>
           <p class='control'>
-            <input ref='name' class='input' type='text' placeholder='Name' v-model='user.name'>
+            <input v-focus ref='name' class='input' type='text' placeholder='Name' v-model='user.name'>
           </p>
         </div>
 
