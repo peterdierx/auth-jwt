@@ -1,29 +1,23 @@
-# auth-jwt
+# Auth-JWT
 
-## Project setup
-```
-yarn install
-```
+<p align='center'><img src='screenshot.png'></p>
 
-### Compiles and hot-reloads for development
+### Setup
 ```
-yarn run serve
+> yarn install
 ```
 
-### Compiles and minifies for production
+### API
 ```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
+> cd auth-jwt/api
+> node index.js
+Server listening at http://localhost:4567
 ```
 
-### Lints and fixes files
+### Auth-JWT
 ```
-yarn run lint
+> cd auth-jwt
+> yarn serve
+App running at:
+- Local: http://localhost:8080/
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
