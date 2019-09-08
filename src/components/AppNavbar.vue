@@ -44,14 +44,14 @@
     methods: {
       login() {
         this.$store.commit( 'clearError' )
-        this.$router.push( '/login' )
+        this.$router.push( '/login', () => {} )
       },
       logout() {
         this.$store.commit( 'logout' )
       },
       signup() {
         this.$store.commit( 'clearError' )
-        this.$router.push( '/signup' )
+        this.$router.push( '/signup', () => {} )
       }
     },
   }
